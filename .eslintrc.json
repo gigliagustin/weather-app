@@ -11,6 +11,7 @@
     "rules": {
         "react/jsx-one-expression-per-line": "off",
         "import/no-extraneous-dependencies": "off",
-        "react/function-component-definition": "off"
+        "react/function-component-definition": "off",
+        "linebreak-style":"off"
     }
 }
