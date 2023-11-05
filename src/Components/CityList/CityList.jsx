@@ -1,14 +1,19 @@
+/* eslint-disable react/function-component-definition */
+/* eslint-disable arrow-parens */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+
 import { Grid } from '@mui/material';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { CityInfo } from '../CityInfo';
-import { Weather } from '../Weather';
+import CityInfo from '../CityInfo/CityInfo';
+import Weather from '../Weather/Weather';
 
-const renderCityAndCountry = (cityAndCountry) => {
+const renderCityAndCountry = eventOnClickCity => cityAndCountry => {
   const { city, country } = cityAndCountry;
 
   return (
-    <li key={city}>
+    <li key={city} onClick={eventOnClickCity}>
       <Grid
         container
         justifyContent="center"
@@ -33,16 +38,20 @@ const renderCityAndCountry = (cityAndCountry) => {
   );
 };
 
-function CityList({ cities }) {
-  return (
-    <ul>
-      { cities.map((cityAndCountry) => renderCityAndCountry(cityAndCountry)) }
-    </ul>
-  );
-}
+const CityList = ({ cities, onClickCity }) => (
+  <ul>
+    {
+        cities.map((cityAndCountry) => renderCityAndCountry(onClickCity)(cityAndCountry))
+      }
+  </ul>
+);
 
 CityList.propTypes = {
-  cities: PropTypes.arrayOf.isRequired,
+  cities: PropTypes.arrayOf(PropTypes.shape({
+    city: PropTypes.string.isRequired,
+    country: PropTypes.string.isRequired,
+  })).isRequired,
+  onClickCity: PropTypes.func.isRequired,
 };
 
 export default CityList;

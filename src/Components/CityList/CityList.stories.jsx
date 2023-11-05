@@ -1,3 +1,5 @@
+/* eslint-disable import/no-extraneous-dependencies */
+import { action } from '@storybook/addon-actions';
 import React from 'react';
 import CityList from './CityList';
 
@@ -15,6 +17,6 @@ export default {
   component: CityList,
 };
 
-export const CityListExample = () => {
-  return <CityList cities={cities} />;
-};
+export function CityListExample() {
+  return <CityList cities={cities} onClickCity={action('Click on city')} />;
+}
