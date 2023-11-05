@@ -1,17 +1,23 @@
-import { Typography } from '@mui/material';
+import { Grid, Typography } from '@mui/material';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { IconContext } from 'react-icons';
 import { IconState, defaultStates } from '../IconState';
 
 const Weather = ({ temperature, state }) => (
-  <div>
+  <Grid
+    container
+    item
+    direction="row"
+    justifyContent="center"
+    spacing={1}
+  >
     { /* eslint-disable-next-line react/jsx-no-constructed-context-values */ }
-    <IconContext.Provider value={{ size: '5em' }}>
+    <IconContext.Provider value={{ size: '6em' }}>
       <IconState state={state} />
     </IconContext.Provider>
-    <Typography display="inline" variant="h3">{temperature}</Typography>
-  </div>
+    <Typography display="inline" variant="h2">{temperature}</Typography>
+  </Grid>
 );
 
 Weather.propTypes = {

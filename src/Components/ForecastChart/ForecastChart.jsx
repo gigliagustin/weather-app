@@ -5,16 +5,18 @@ import {
   Legend,
   Line,
   LineChart,
+  ResponsiveContainer,
   Tooltip,
   XAxis,
   YAxis,
 } from 'recharts';
 
 const ForecastChart = ({ forecastData }) => (
-  <div>
+  <ResponsiveContainer
+    height={250}
+    width="95%"
+  >
     <LineChart
-      height={250}
-      width={700}
       margin={{
         top: 20,
         bottom: 20,
@@ -39,7 +41,7 @@ const ForecastChart = ({ forecastData }) => (
         stroke="#0000FF"
       />
     </LineChart>
-  </div>
+  </ResponsiveContainer>
 );
 ForecastChart.propTypes = {
   forecastData: PropTypes.arrayOf(

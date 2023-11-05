@@ -3,7 +3,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 
-import { Grid } from '@mui/material';
+import { Grid, List, ListItemButton } from '@mui/material';
 import PropTypes from 'prop-types';
 import React from 'react';
 import CityInfo from '../CityInfo/CityInfo';
@@ -13,7 +13,10 @@ const renderCityAndCountry = eventOnClickCity => cityAndCountry => {
   const { city, country } = cityAndCountry;
 
   return (
-    <li key={city} onClick={eventOnClickCity}>
+    <ListItemButton
+      key={city}
+      onClick={eventOnClickCity}
+    >
       <Grid
         container
         justifyContent="center"
@@ -34,16 +37,16 @@ const renderCityAndCountry = eventOnClickCity => cityAndCountry => {
           <Weather temperature={10} state="sunny" />
         </Grid>
       </Grid>
-    </li>
+    </ListItemButton>
   );
 };
 
 const CityList = ({ cities, onClickCity }) => (
-  <ul>
+  <List>
     {
         cities.map((cityAndCountry) => renderCityAndCountry(onClickCity)(cityAndCountry))
       }
-  </ul>
+  </List>
 );
 
 CityList.propTypes = {
