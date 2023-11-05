@@ -23,7 +23,7 @@ const renderForecastItem = (forecast) => {
 const Forecast = ({ forecastItemList }) => (
   <Grid
     container
-    justifyContent="center"
+    justifyContent="space-around"
     alignItems="center"
   >
     {

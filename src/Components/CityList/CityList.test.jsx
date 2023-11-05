@@ -15,7 +15,7 @@ const cities = [
 test('CityList Render', async () => {
   /// AAA Arrange, Act, Assert
   render(<CityList cities={cities} />);
-  const items = await screen.findAllByRole('listitem');
+  const items = await screen.findAllByRole('button');
 
   expect(items).toHaveLength(6);
 });
@@ -28,7 +28,7 @@ test('City list click on item', async () => {
 
   render(<CityList cities={cities} onClickCity={fnClickOnItem} />);
 
-  const items = await screen.findAllByRole('listitem');
+  const items = await screen.findAllByRole('button');
 
   // Now to simulate the acction, we're gonna use fireEvent
   // fireEvent is part of the testing-library
