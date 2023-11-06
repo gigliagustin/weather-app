@@ -1,7 +1,8 @@
 /* eslint-disable no-unused-vars */
+import { Paper } from '@mui/material';
 import React from 'react';
 import { useNavigate } from 'react-router';
-import { CityList } from '../Components';
+import { AppFrame, CityList } from '../Components';
 
 const MainPage = (props) => {
   const navigate = useNavigate();
@@ -17,14 +18,16 @@ const MainPage = (props) => {
     { city: 'Bogotá', country: 'Colombia' },
   ];
   return (
-    <div>
-      MainPage
-      <h2>Lista de ciudades</h2>
-      <CityList
-        cities={cities}
-        onClickCity={handleOnClick}
-      />
-    </div>
+    <AppFrame>
+      <Paper
+        elevation={3}
+      >
+        <CityList
+          cities={cities}
+          onClickCity={handleOnClick}
+        />
+      </Paper>
+    </AppFrame>
   );
 };
 MainPage.propTypes = {};

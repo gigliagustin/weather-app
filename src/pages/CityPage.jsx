@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
 import { Grid } from '@mui/material';
 import React from 'react';
-import { Link } from 'react-router-dom';
 import {
+  AppFrame,
   CityInfo,
   Forecast,
   ForecastChart,
@@ -85,41 +85,39 @@ const CityPage = () => {
   const forecastItemList = forecastItemsExample;
 
   return (
-    <Grid
-      container
-      justifyContent="space-around"
-      direction="column"
-      spacing={2}
-    >
+    <AppFrame>
       <Grid
         container
-        item
-        justifyContent="center"
-        alignItems="flex-end"
-        xs={12}
+        justifyContent="space-around"
+        direction="column"
+        spacing={2}
       >
-        <CityInfo city={city} country={country} />
+        <Grid
+          container
+          item
+          justifyContent="center"
+          alignItems="flex-end"
+          xs={12}
+        >
+          <CityInfo city={city} country={country} />
+        </Grid>
+        <Grid
+          container
+          item
+          justifyContent="center"
+          xs={12}
+        >
+          <Weather state={state} temperature={temperature} />
+          <WeatherDetails humidity={humidity} wind={wind} />
+        </Grid>
+        <Grid item>
+          <ForecastChart forecastData={forecastData} />
+        </Grid>
+        <Grid item>
+          <Forecast forecastItemList={forecastItemList} />
+        </Grid>
       </Grid>
-      <Grid
-        container
-        item
-        justifyContent="center"
-        xs={12}
-      >
-        <Weather state={state} temperature={temperature} />
-        <WeatherDetails humidity={humidity} wind={wind} />
-      </Grid>
-      <Grid item>
-        <ForecastChart forecastData={forecastData} />
-      </Grid>
-      <Grid item>
-        <Forecast forecastItemList={forecastItemList} />
-      </Grid>
-      City
-      <div>
-        <Link to="/main">Back to main</Link>
-      </div>
-    </Grid>
+    </AppFrame>
   );
 };
 CityPage.propTypes = {};
